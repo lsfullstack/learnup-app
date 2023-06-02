@@ -33,9 +33,8 @@ module.exports = {
         '1': '#004aad',
         '2': '#2771d3',
         '3': '#0068ff',
-        '4': '#f2f9ff',
-        '5': '#e26d00',
-        '6': '#f08f35',
+        '4': '#e26d00',
+        '5': '#f08f35',
       },
       grey: {
         '1': '#171515',
@@ -56,6 +55,7 @@ module.exports = {
         'attention': '#f0d266',
         'overdue': '#c66a6a',
       },
+      white: '#ffffff',
     },
 
   },
