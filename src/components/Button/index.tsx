@@ -5,7 +5,7 @@ const Button = ({children, icon, styleType, empty}: IButtonProps) => {
 
   let defaultStyle: string = `
     ${icon && "flex justify-between items-center px-4 gap-3"}
-    min-w-fit w-full h-12 rounded-lg
+    w-full h-12 rounded-lg px-8
     text-button font-button
     transition duration-300 
   `;
