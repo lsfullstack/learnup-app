@@ -1,8 +1,19 @@
 import { IButtonProps } from "./interface";
-import { BlueButton, Gray1Button, Gray6Button, OrangeButton, RedButton } from "./variants";
+import {
+  BlueButton,
+  Gray1Button,
+  Gray6Button,
+  OrangeButton,
+  RedButton,
+} from "./variants";
 
-const Button = ({children, icon, styleType, empty}: IButtonProps) => {
-
+const Button = ({
+  children,
+  icon,
+  styleType,
+  empty,
+  onClick,
+}: IButtonProps) => {
   let defaultStyle: string = `
     ${icon && "flex justify-between items-center px-4 gap-3"}
     w-full h-12 rounded-lg px-8
@@ -12,18 +23,66 @@ const Button = ({children, icon, styleType, empty}: IButtonProps) => {
 
   switch (styleType) {
     case "blue":
-      return <BlueButton children={children} icon={icon} defaultStyle={defaultStyle} empty={empty} />
+      return (
+        <BlueButton
+          children={children}
+          icon={icon}
+          defaultStyle={defaultStyle}
+          empty={empty}
+          onClick={onClick}
+        />
+      );
     case "orange":
-      return <OrangeButton children={children} icon={icon} defaultStyle={defaultStyle} empty={empty} />
+      return (
+        <OrangeButton
+          children={children}
+          icon={icon}
+          defaultStyle={defaultStyle}
+          empty={empty}
+          onClick={onClick}
+        />
+      );
     case "grey-1":
-      return <Gray1Button children={children} icon={icon} defaultStyle={defaultStyle} empty={empty} />
+      return (
+        <Gray1Button
+          children={children}
+          icon={icon}
+          defaultStyle={defaultStyle}
+          empty={empty}
+          onClick={onClick}
+        />
+      );
     case "grey-2":
-      return <Gray6Button children={children} icon={icon} defaultStyle={defaultStyle} empty={empty} />
+      return (
+        <Gray6Button
+          children={children}
+          icon={icon}
+          defaultStyle={defaultStyle}
+          empty={empty}
+          onClick={onClick}
+        />
+      );
     case "red":
-      return <RedButton children={children} icon={icon} defaultStyle={defaultStyle} empty={empty} />
+      return (
+        <RedButton
+          children={children}
+          icon={icon}
+          defaultStyle={defaultStyle}
+          empty={empty}
+          onClick={onClick}
+        />
+      );
     default:
-      return <BlueButton children={children} icon={icon} defaultStyle={defaultStyle} empty={empty} />
+      return (
+        <BlueButton
+          children={children}
+          icon={icon}
+          defaultStyle={defaultStyle}
+          empty={empty}
+          onClick={onClick}
+        />
+      );
   }
-}
+};
 
 export default Button;
