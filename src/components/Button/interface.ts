@@ -5,8 +5,9 @@ export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: ReactElement;
   styleType: "blue" | "orange" | "grey-1" | "grey-2" | "red";
   empty?: boolean;
+  onClick?: () => void;
 }
 
-export interface IVariantButtonProps extends Omit<IButtonProps, 'styleType'> {
+export interface IVariantButtonProps extends Omit<IButtonProps, "styleType"> {
   defaultStyle: string;
 }
