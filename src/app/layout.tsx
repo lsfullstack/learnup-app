@@ -1,3 +1,4 @@
+import LearnUpProvider from '@/context';
 import './globals.css'
 import { Inter, Roboto } from 'next/font/google'
 
@@ -21,7 +22,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={roboto.className}>{children}</body>
+      <body className={roboto.className}>
+        <LearnUpProvider>
+          {children}
+        </LearnUpProvider>
+      </body>
     </html>
   )
 }
