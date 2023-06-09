@@ -7,6 +7,8 @@ export interface ILearnUpContextProps {
   setDropdownIsOpen: Dispatch<SetStateAction<boolean>>;
   menuIsOpen: boolean;
   setMenuIsOpen: Dispatch<SetStateAction<boolean>>;
+  signIn: ({}: ISignInProps) => void;
+  signOut: () => void;
 }
 
 export interface ILearnUpProviderProps {
@@ -21,4 +23,10 @@ export interface IUserProps {
   password: string;
   isAdmin: boolean;
   isActive: boolean;
+}
+
+export interface ISignInProps {
+  email: string;
+  password: string;
+  rememberme: boolean;
 }
