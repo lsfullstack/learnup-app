@@ -22,3 +22,9 @@ export interface IUserProps {
   isAdmin: boolean;
   isActive: boolean;
 }
+
+export interface ISignInProps {
+  email: string;
+  password: string;
+  rememberme: boolean;
+}
