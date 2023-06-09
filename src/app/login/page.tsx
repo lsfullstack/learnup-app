@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import bgImage from "../../../public/images/bg-image.jpg";
 import logo from "../../../public/images/logo-call-to-action.png";
@@ -6,8 +8,19 @@ import Input from "@/components/Input";
 import Button from "@/components/Button";
 import { TargetLink } from "@/components/TargetLink";
 import { DevelopersLink } from "@/components/DevelopersLink";
+import { useForm } from "react-hook-form";
+import { ISignInProps } from "@/context/interface";
+import { useContext } from "react";
+import { LearnUpContext } from "@/context";
+import { zodResolver } from "@hookform/resolvers/zod";
+import loginSchema from "./validations";
 
-const Login = () => {
+export default function Login() {
+  const { register, handleSubmit, formState: { errors } } = useForm<ISignInProps>({
+    resolver: zodResolver(loginSchema)
+  });
+  const { signIn } = useContext(LearnUpContext);
+
   return (
     <main
       className="h-screen flex"
@@ -24,12 +37,35 @@ const Login = () => {
             <p className="font-enphasis">Entre para estudar.</p>
           </div>
 
-          <Form>
-            <Input model="input-label" name="email" placeholder="Digite seu email" label="Email" type="text" />
-            <Input model="input-label" name="password" placeholder="Digite sua senha" label="Senha" type="password" />
+          <Form  onSubmit={handleSubmit(signIn)}>
+            <Input 
+              model="input-label" 
+              name="email" 
+              placeholder="Digite seu email" 
+              label="Email" 
+              type="text" 
+              register={register}
+              error={errors.email}
+            />
+
+            <Input 
+              model="input-label" 
+              name="password" 
+              placeholder="Digite sua senha" 
+              label="Senha" 
+              type="password"
+              register={register}
+              error={errors.password}
+            />
             <TargetLink href="/forgot-password" styleType="grey">Esqueci minha senha</TargetLink>
             <div className="w-full flex items-center gap-2 ">
-              <input type="checkbox" placeholder="Lembrar de mim" name="Lembrar" id="rememberme" className="w-5 h-5 rounded-sm cursor-pointer"/>
+              <input 
+                type="checkbox" 
+                placeholder="Lembrar de mim" 
+                id="rememberme" 
+                className="w-5 h-5 rounded-sm cursor-pointer"
+                {...register("rememberme")}
+              />
               <label htmlFor="rememberme" className="cursor-pointer">Lembrar de mim</label>
             </div>
 
@@ -42,5 +78,3 @@ const Login = () => {
     </main>
   );
 }
-
-export default Login;

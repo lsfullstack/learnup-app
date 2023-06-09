@@ -21,7 +21,7 @@ const Footer = () => {
       <Image src={whiteLogo} alt="LearnUp Logo" width={200} height={75} />
       
       <div className="flex flex-col items-center gap-2">
-        <p className="font-footnote text-footnote">© 2023 -  Todos os direitos reservados.</p>
+        <p className="font-footnote text-footnote">&copy; 2023 -  Todos os direitos reservados.</p>
         <DevelopersLink styleType="white"/>
       </div>
 

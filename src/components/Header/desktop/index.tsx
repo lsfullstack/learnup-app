@@ -16,7 +16,7 @@ const DesktopUserMenu = () => {
     >    
     <Button styleType="orange" empty >Blog</Button>
       {      
-        !isLoggedIn ?
+        isLoggedIn ?
           <span 
             className={`
               font-enphasis h-full flex items-center gap-2 cursor-pointer 

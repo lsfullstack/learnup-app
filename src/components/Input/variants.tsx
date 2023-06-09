@@ -1,11 +1,11 @@
 import { IVariantInputProps } from "./interface";
 
-export const InputBasic = ({placeholder, name, type}: IVariantInputProps) => {
+export const InputBasic = ({placeholder, name, type, register}: IVariantInputProps) => {
   return (
     <input 
       type={type} 
-      name={name}
       placeholder={placeholder}
+      {...register(name)}
       className={`
         border-2 rounded-lg h-12 px-4 w-full
         border-grey-5 text-grey-1 
@@ -19,15 +19,15 @@ export const InputBasic = ({placeholder, name, type}: IVariantInputProps) => {
   );
 }
 
-export const InputLabel = ({label, placeholder, name, type}: IVariantInputProps) => {
+export const InputLabel = ({label, placeholder, name, type, register}: IVariantInputProps) => {
   return (
     <span className="flex flex-col gap-1 w-full">
       <label htmlFor={name} className="text-grey-1 font-enphasis" >{label}</label>
       <input 
         type={type} 
-        name={name}
         id={name}
         placeholder={placeholder} 
+        {...register(name)}
         className={`
           border-2 rounded-lg h-12 px-4
           border-grey-5 text-grey-1 
@@ -42,7 +42,7 @@ export const InputLabel = ({label, placeholder, name, type}: IVariantInputProps)
   );
 }
 
-export const InputSearch = ({placeholder, name, type}: IVariantInputProps) => {
+export const InputSearch = ({placeholder, name, type, register}: IVariantInputProps) => {
   return (
     <div 
       className={`
@@ -54,9 +54,9 @@ export const InputSearch = ({placeholder, name, type}: IVariantInputProps) => {
     >
       <input 
         type={type} 
-        name={name} 
         id={name} 
         placeholder={placeholder} 
+        {...register(name)}
         autoComplete="off"
         className={`
           h-10 w-full px-2 border-grey-5 rounded-lg 
