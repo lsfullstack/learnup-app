@@ -1,11 +1,12 @@
 import { IVariantInputProps } from "./interface";
 
-export const InputBasic = ({placeholder, name, type, register}: IVariantInputProps) => {
+export const InputBasic = ({placeholder, name, type, register, maxLength}: IVariantInputProps) => {
   return (
     <input 
       type={type} 
       placeholder={placeholder}
       {...register(name)}
+      maxLength={maxLength}
       className={`
         border-2 rounded-lg h-12 px-4 w-full
         border-grey-5 text-grey-1 
@@ -19,7 +20,7 @@ export const InputBasic = ({placeholder, name, type, register}: IVariantInputPro
   );
 }
 
-export const InputLabel = ({label, placeholder, name, type, register}: IVariantInputProps) => {
+export const InputLabel = ({label, placeholder, name, type, register, maxLength}: IVariantInputProps) => {
   return (
     <span className="flex flex-col gap-1 w-full">
       <label htmlFor={name} className="text-grey-1 font-enphasis" >{label}</label>
@@ -27,6 +28,7 @@ export const InputLabel = ({label, placeholder, name, type, register}: IVariantI
         type={type} 
         id={name}
         placeholder={placeholder} 
+        maxLength={maxLength}
         {...register(name)}
         className={`
           border-2 rounded-lg h-12 px-4
