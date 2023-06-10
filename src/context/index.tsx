@@ -1,7 +1,7 @@
 "use client"
 
 import { createContext, useEffect, useState } from "react"
-import { ILearnUpProviderProps, ILearnUpContextProps, IUserProps, ISignInProps } from "./interface";
+import { ILearnUpProviderProps, ILearnUpContextProps, IUserProps, ISignInProps, IRegisterUserProps } from "./interface";
 import api from "@/services/api";
 import { useRouter } from "next/navigation";
 
@@ -52,6 +52,16 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
     router.push("/login");
   } 
 
+  const registerUser = async ({username, name, email, password}: IRegisterUserProps) => {
+    try {
+      await api.post("/users", {username, name, email, password});
+      router.push("/login");
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <LearnUpContext.Provider
       value={{
@@ -63,6 +73,7 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
         setMenuIsOpen,
         signIn,
         signOut,
+        registerUser,
       }}
     >
       {children}

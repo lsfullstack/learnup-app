@@ -9,6 +9,7 @@ export interface ILearnUpContextProps {
   setMenuIsOpen: Dispatch<SetStateAction<boolean>>;
   signIn: ({}: ISignInProps) => void;
   signOut: () => void;
+  registerUser: ({}: IRegisterUserProps) => void;
 }
 
 export interface ILearnUpProviderProps {
@@ -29,4 +30,12 @@ export interface ISignInProps {
   email: string;
   password: string;
   rememberme: boolean;
+}
+
+export interface IRegisterUserProps {
+  name: string;
+  username: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
 }

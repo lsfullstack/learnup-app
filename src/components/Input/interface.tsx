@@ -9,6 +9,7 @@ export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   model: "input-basic" | "input-search" | "input-label";
   register: UseFormRegister<any>;
   error?: FieldError | undefined;
+  maxLength?: number;
 }
 
 export interface IVariantInputProps extends Omit<IInputProps, "model"> {
