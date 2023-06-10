@@ -16,7 +16,7 @@ import registerUserSchema from "./validations";
 import { IRegisterUserProps } from "@/context/interface";
 
 
-export default function Login() {
+export default function Register() {
   const { register, handleSubmit, formState: { errors } } = useForm<IRegisterUserProps>({
     resolver: zodResolver(registerUserSchema)
   });
