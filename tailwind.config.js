@@ -33,6 +33,7 @@ module.exports = {
       },
       backgroundColor: {
         modal: "rgba(23, 21, 21, 0.5)",
+        "add-link": "rgba(0, 104, 255, 0.05)",
       },
     },
     colors: {

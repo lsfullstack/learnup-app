@@ -1,7 +1,6 @@
-import { Form } from "../Form";
-import { IModalProps } from "./interface";
+import { IModalContainerProps } from "./interface";
 
-const Modal = ({ title, isOpen, onClose, children }: IModalProps) => {
+const Modal = ({ title, isOpen, onClose, children }: IModalContainerProps) => {
   if (!isOpen) return null;
 
   return (
@@ -16,7 +15,7 @@ const Modal = ({ title, isOpen, onClose, children }: IModalProps) => {
           <h2 className="text-xl font-bold">{title}</h2>
         </div>
 
-        <Form>{children}</Form>
+        {children}
       </div>
     </div>
   );
