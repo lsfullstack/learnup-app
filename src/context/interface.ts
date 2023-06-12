@@ -10,6 +10,15 @@ export interface ILearnUpContextProps {
   signIn: ({}: ISignInProps) => void;
   signOut: () => void;
   registerUser: ({}: IRegisterUserProps) => void;
+  createStudyTopic: ({}: IStudyTopicProps) => Promise<void>;
+  editStudyTopic: ({}: IStudyTopicProps) => Promise<void>;
+  deleteStudyTopic: () => Promise<void>;
+  createLesson: ({}: ILessonProps) => Promise<void>;
+  editLesson: ({}: ILessonProps) => Promise<void>;
+  deleteLesson: () => Promise<void>;
+  addVideo: ({}: ILinkProps) => Promise<void>;
+  addAnnotation: ({}: IAnnotationProps) => Promise<void>;
+  addExtraContent: ({}: ILinkProps) => Promise<void>;
 }
 
 export interface ILearnUpProviderProps {
@@ -38,4 +47,22 @@ export interface IRegisterUserProps {
   email: string;
   password: string;
   confirmPassword: string;
+}
+
+export interface IStudyTopicProps {
+  name: string;
+  description: string;
+  categories: string;
+}
+
+export interface ILessonProps {
+  title: string;
+}
+
+export interface IAnnotationProps {
+  annotation: string;
+}
+
+export interface ILinkProps {
+  link: string;
 }
