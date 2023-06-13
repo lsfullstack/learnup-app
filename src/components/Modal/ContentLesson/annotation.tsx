@@ -25,7 +25,7 @@ export const AddAnnotationsModal = ({ isOpen, onClose }: IModalProps) => {
   const { addAnnotation } = useContext(LearnUpContext);
 
   return (
-    <Modal title="Adicionar Anotações" isOpen={isOpen} onClose={onClose} big>
+    <Modal title="Adicionar Anotações" isOpen={isOpen} big>
       <form
         className="flex w-full flex-col items-end gap-2 p-4"
         onSubmit={handleSubmit(addAnnotation)}

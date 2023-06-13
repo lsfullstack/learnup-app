@@ -12,7 +12,7 @@ export const DeleteLessonModal = ({ isOpen, onClose }: IModalProps) => {
   const { deleteLesson } = useContext(LearnUpContext);
 
   return (
-    <Modal title="Excluir Aula" isOpen={isOpen} onClose={onClose}>
+    <Modal title="Excluir Aula" isOpen={isOpen}>
       <p className="py-2 text-center text-xl font-bold">
         Realmente deseja excluir esta aula? Esta ação não poderá ser desfeita.
       </p>

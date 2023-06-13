@@ -26,7 +26,7 @@ export const CreateLessonModal = ({ isOpen, onClose }: IModalProps) => {
   const { createLesson } = useContext(LearnUpContext);
 
   return (
-    <Modal title="Criar Aula" isOpen={isOpen} onClose={onClose}>
+    <Modal title="Criar Aula" isOpen={isOpen}>
       <Form onSubmit={handleSubmit(createLesson)}>
         <Input
           type="text"

@@ -26,7 +26,7 @@ export const EditLessonModal = ({ isOpen, onClose }: IModalProps) => {
   const { editLesson } = useContext(LearnUpContext);
 
   return (
-    <Modal title="Editar Aula" isOpen={isOpen} onClose={onClose}>
+    <Modal title="Editar Aula" isOpen={isOpen}>
       <Form onSubmit={handleSubmit(editLesson)}>
         <Input
           type="text"
