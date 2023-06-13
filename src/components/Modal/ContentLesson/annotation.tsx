@@ -6,7 +6,6 @@ import Modal from "..";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 
-import { Form } from "@/components/Form";
 import { IModalProps } from "../interface";
 import { LearnUpContext } from "@/context";
 import { annotationSchema } from "./validations";
@@ -26,17 +25,19 @@ export const AddAnnotationsModal = ({ isOpen, onClose }: IModalProps) => {
   const { addAnnotation } = useContext(LearnUpContext);
 
   return (
-    <Modal title="Adicionar Anotações" isOpen={isOpen} onClose={onClose}>
-      <Form onSubmit={handleSubmit(addAnnotation)}>
+    <Modal title="Adicionar Anotações" isOpen={isOpen} onClose={onClose} big>
+      <form
+        className="flex w-full flex-col items-end gap-2 p-4"
+        onSubmit={handleSubmit(addAnnotation)}
+      >
         <Input
-          type="text"
           name="annotation"
           placeholder="Digite suas anotações"
-          model="input-basic"
+          model="textarea"
           register={register}
           error={errors.annotation}
         />
-        <div className="flex w-full gap-4">
+        <div className="flex gap-4 sm:w-1/2">
           <Button styleType="grey-2" onClick={() => onClose(false)}>
             Cancelar
           </Button>
@@ -44,7 +45,7 @@ export const AddAnnotationsModal = ({ isOpen, onClose }: IModalProps) => {
             Salvar
           </Button>
         </div>
-      </Form>
+      </form>
     </Modal>
   );
 };

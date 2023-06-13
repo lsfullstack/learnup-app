@@ -5,6 +5,7 @@ export interface IModalContainerProps {
   isOpen: boolean;
   onClose: Dispatch<SetStateAction<boolean>>;
   children: ReactNode;
+  big?: boolean;
 }
 
 export interface IModalProps

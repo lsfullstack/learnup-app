@@ -1,80 +1,125 @@
 import { IVariantInputProps } from "./interface";
 
-export const InputBasic = ({placeholder, name, type, register, maxLength}: IVariantInputProps) => {
+export const InputBasic = ({
+  placeholder,
+  name,
+  type,
+  register,
+  maxLength,
+}: IVariantInputProps) => {
   return (
-    <input 
-      type={type} 
+    <input
+      type={type}
       placeholder={placeholder}
       {...register(name)}
       maxLength={maxLength}
       className={`
-        border-2 rounded-lg h-12 px-4 w-full
-        border-grey-5 text-grey-1 
-        placeholder:text-grey-4 
-        shadow-md shadow-grey-4/25 
+        h-12 w-full rounded-lg border-2 border-grey-5 px-4
+        text-grey-1 shadow-md 
+        shadow-grey-4/25 
         transition duration-300 
-        hover:bg-grey-6 
-        focus:outline-none focus:border-brand-1
+        placeholder:text-grey-4 hover:bg-grey-6 
+        focus:border-brand-1 
+        focus:outline-none sm:max-w-[992px]
       `}
     />
   );
-}
+};
 
-export const InputLabel = ({label, placeholder, name, type, register, maxLength}: IVariantInputProps) => {
+export const InputLabel = ({
+  label,
+  placeholder,
+  name,
+  type,
+  register,
+  maxLength,
+}: IVariantInputProps) => {
   return (
-    <span className="flex flex-col gap-1 w-full">
-      <label htmlFor={name} className="text-grey-1 font-enphasis" >{label}</label>
-      <input 
-        type={type} 
+    <span className="flex w-full flex-col gap-1">
+      <label htmlFor={name} className="font-enphasis text-grey-1">
+        {label}
+      </label>
+      <input
+        type={type}
         id={name}
-        placeholder={placeholder} 
+        placeholder={placeholder}
         maxLength={maxLength}
         {...register(name)}
         className={`
-          border-2 rounded-lg h-12 px-4
-          border-grey-5 text-grey-1 
-          placeholder:text-grey-4 
-          shadow-md shadow-grey-4/25 
-          transition duration-300 
+          h-12 rounded-lg border-2 border-grey-5
+          px-4 text-grey-1 
+          shadow-md 
+          shadow-grey-4/25 transition 
+          duration-300 placeholder:text-grey-4 
           hover:bg-grey-6 
-          focus:outline-none focus:border-brand-1
+          focus:border-brand-1 focus:outline-none
         `}
       />
     </span>
   );
-}
+};
 
-export const InputSearch = ({placeholder, name, type, register}: IVariantInputProps) => {
+export const InputSearch = ({
+  placeholder,
+  name,
+  type,
+  register,
+}: IVariantInputProps) => {
   return (
-    <div 
+    <div
       className={`
-        w-full h-12 flex justify-between items-center 
-        pr-1 rounded-lg gap-2
-        border-2 border-grey-5 
+        flex h-12 w-full items-center justify-between 
+        gap-2 rounded-lg border-2
+        border-grey-5 pr-1 
         focus-within:border-brand-1 
       `}
     >
-      <input 
-        type={type} 
-        id={name} 
-        placeholder={placeholder} 
+      <input
+        type={type}
+        id={name}
+        placeholder={placeholder}
         {...register(name)}
         autoComplete="off"
         className={`
-          h-10 w-full px-2 border-grey-5 rounded-lg 
-          focus:outline-none autofocus:bg-transparent
+          autofocus:bg-transparent h-10 w-full rounded-lg border-grey-5 
+          px-2 focus:outline-none
         `}
       />
-      <button 
-        type="submit" 
+      <button
+        type="submit"
         className={`
-          w-20 h-10 px-4 rounded-lg 
-          bg-brand-1 text-white 
-          text-button font-button 
+          h-10 w-20 rounded-lg bg-brand-1 
+          px-4 text-button 
+          font-button text-white 
           transition duration-300
           hover:bg-brand-2
         `}
-      >Buscar</button>
+      >
+        Buscar
+      </button>
     </div>
   );
-}
+};
+
+export const Textarea = ({
+  placeholder,
+  name,
+  register,
+}: IVariantInputProps) => {
+  return (
+    <textarea
+      placeholder={placeholder}
+      {...register(name)}
+      className={`
+        mb-2 h-40 w-full resize-none rounded-lg
+        border-2 border-grey-5 px-4 py-2
+        text-grey-1 
+        shadow-md shadow-grey-4/25 
+        transition duration-300 
+        placeholder:text-grey-4 
+        hover:bg-grey-6 focus:border-brand-1
+        focus:outline-none
+      `}
+    />
+  );
+};
