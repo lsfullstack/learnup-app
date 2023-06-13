@@ -1,4 +1,4 @@
-export interface IStudyTopicProps {
+export interface IStudyTopicCardProps {
   title: string;
   description: string;
   categories: string[];

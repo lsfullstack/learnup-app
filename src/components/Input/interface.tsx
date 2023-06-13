@@ -2,16 +2,14 @@ import { InputHTMLAttributes } from "react";
 import { FieldError, UseFormRegister } from "react-hook-form";
 
 export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  type: string;
+  type?: string;
   name: string;
   label?: string;
   placeholder: string;
-  model: "input-basic" | "input-search" | "input-label";
+  model: "input-basic" | "input-search" | "input-label" | "textarea";
   register: UseFormRegister<any>;
   error?: FieldError | undefined;
   maxLength?: number;
 }
 
-export interface IVariantInputProps extends Omit<IInputProps, "model"> {
-  
-}
+export interface IVariantInputProps extends Omit<IInputProps, "model"> {}
