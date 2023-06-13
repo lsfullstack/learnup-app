@@ -26,7 +26,7 @@ export const AddVideoModal = ({ isOpen, onClose }: IModalProps) => {
   const { addVideo } = useContext(LearnUpContext);
 
   return (
-    <Modal title="Adicionar Vídeo" isOpen={isOpen} onClose={onClose}>
+    <Modal title="Adicionar Vídeo" isOpen={isOpen}>
       <Form onSubmit={handleSubmit(addVideo)}>
         <Input
           type="text"
