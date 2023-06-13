@@ -34,6 +34,7 @@ module.exports = {
       backgroundColor: {
         modal: "rgba(23, 21, 21, 0.5)",
       },
+      
     },
     colors: {
       brand: {
