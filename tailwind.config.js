@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      width:{
+        "text_container": "33rem",
+      },
       fontSize: {
         heading_1: "2.25rem",
         heading_2: "1.5rem",
@@ -35,6 +38,7 @@ module.exports = {
         modal: "rgba(23, 21, 21, 0.5)",
         "add-link": "rgba(0, 104, 255, 0.05)",
       },
+      
     },
     colors: {
       brand: {
