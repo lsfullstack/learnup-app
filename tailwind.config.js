@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      width:{
+        "text_container": "33rem",
+      },
       fontSize: {
         heading_1: "2.25rem",
         heading_2: "1.5rem",
