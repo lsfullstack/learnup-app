@@ -26,17 +26,16 @@ export default function Login() {
     <main
     className="h-screen flex"
     >
-      <div className="w-[50%] h-screen hidden lg:block left-0 ">
-        <Image src={bgImage} alt="bg-image" className="h-screen  object-rigth object-cover">
-          </Image>
+      <div className="w-[50%] h-screen hidden lg:block left-0 relative">
+        <Image src={bgImage} alt="bg-image" className="h-screen  object-rigth object-cover" />
+        <TextContainer text="Bem-vindo ao learnUp a plataforma de aprendizagem definitiva para ajudá-lo a alcançar o seu potencial máximo nos estudos!" highlightedWord="learnUp" />
       </div>
       <div className="w-full h-full flex flex-col justify-between items-center lg:w-[50%] px-8 py-4 overflow-auto">
-        <Image src={logo} alt="LearnUp Logo" className="w-full max-w-[400px]" />
-        <div className="w-full flex flex-col items-center">
+        <Image src={logo} alt="LearnUp Logo" className="w-full max-w-[400px] animate-fade-in-and-down" />
+        <div className="w-full flex flex-col items-center animate-fade-in-and-left">
           <div className="flex flex-col items-center">
             <p className="font-heading_1 text-heading_2">Login</p>
             <p className="font-enphasis text-center">Bem-vindo(a) a plataforma da <span className="text-brand-1">learn</span><span className="text-brand-4">Up</span>!</p>
-    <TextContainer text="Bem-vindo ao learnUp arrozDoce a plataforma de aprendizagem definitiva para ajudá-lo a alcançar o seu potencial máximo nos estudos!" highlightedWord="learnUp" />
             <p className="font-enphasis">Entre para estudar.</p>
           </div>
 
