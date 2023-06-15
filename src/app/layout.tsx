@@ -1,6 +1,11 @@
+'use client';
+
 import LearnUpProvider from '@/context';
 import './globals.css'
 import { Inter, Roboto } from 'next/font/google'
+import { usePathname } from 'next/navigation';
+import checkIsPublicRoute from '@/functions/check-is-public-route';
+import PrivateRoute from '@/components/PrivateRoute';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,13 +25,23 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+  const pathname = usePathname();
+
+  const isPublicPage = checkIsPublicRoute(pathname);
+
   return (
     <html lang="pt-br">
       <body className={roboto.className}>
         <LearnUpProvider>
-          {children}
+          {isPublicPage && children}
+          {!isPublicPage && (
+            <PrivateRoute>
+              {children}
+            </PrivateRoute>
+          )}
         </LearnUpProvider>
       </body>
     </html>
-  )
+  );
 }
