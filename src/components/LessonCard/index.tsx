@@ -16,7 +16,7 @@ const LessonCard = ({ title }: ILessonCardProps) => {
 
   return (
     <div className="flex justify-between gap-2 border border-grey-5 bg-white px-4 py-2 transition duration-300 hover:bg-grey-6">
-      <p className="cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap font-semibold text-grey-1 hover:underline">
+      <p className="cursor-pointer truncate font-semibold text-grey-1 hover:underline">
         {title}
       </p>
       <div className="relative flex items-center gap-2">
