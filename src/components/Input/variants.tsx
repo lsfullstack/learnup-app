@@ -36,7 +36,7 @@ export const InputLabel = ({
 }: IVariantInputProps) => {
   return (
     <span className="flex w-full flex-col gap-1">
-      <label htmlFor={name} className="font-enphasis text-grey-1">
+      <label htmlFor={name} className="self-start font-enphasis text-grey-1">
         {label}
       </label>
       <input

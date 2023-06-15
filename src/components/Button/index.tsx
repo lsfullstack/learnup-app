@@ -5,6 +5,7 @@ import {
   Gray6Button,
   OrangeButton,
   RedButton,
+  WhiteButton,
 } from "./variants";
 
 const Button = ({
@@ -13,6 +14,7 @@ const Button = ({
   styleType,
   empty,
   onClick,
+  disabled,
 }: IButtonProps) => {
   let defaultStyle: string = `
     ${icon && "flex justify-between items-center px-4 gap-3"}
@@ -70,6 +72,16 @@ const Button = ({
           defaultStyle={defaultStyle}
           empty={empty}
           onClick={onClick}
+        />
+      );
+    case "white":
+      return (
+        <WhiteButton
+          children={children}
+          icon={icon}
+          defaultStyle={defaultStyle}
+          onClick={onClick}
+          disabled={disabled}
         />
       );
     default:

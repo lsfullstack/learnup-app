@@ -87,7 +87,7 @@ export const Gray6Button = ({
     <button
       className={`
       ${defaultStyle}
-      bg-grey-6 hover:bg-grey-5 border border-grey-5
+      border border-grey-5 bg-grey-6 hover:bg-grey-5
     `}
       onClick={onClick}
     >
@@ -111,6 +111,28 @@ export const RedButton = ({
       bg-feedback-error-1 text-white hover:bg-feedback-error-2
     `}
       onClick={onClick}
+    >
+      <span>{children}</span>
+      {icon && cloneElement(icon, { className: "w-7 h-7" })}
+    </button>
+  );
+};
+
+export const WhiteButton = ({
+  children,
+  icon,
+  defaultStyle,
+  onClick,
+  disabled,
+}: IVariantButtonProps) => {
+  return (
+    <button
+      className={`
+      ${defaultStyle} 
+      max-w-[220px] whitespace-nowrap border border-grey-5 bg-white text-brand-4 shadow-card hover:bg-grey-6 disabled:text-grey-4 disabled:hover:bg-white
+    `}
+      onClick={onClick}
+      disabled={disabled}
     >
       <span>{children}</span>
       {icon && cloneElement(icon, { className: "w-7 h-7" })}
