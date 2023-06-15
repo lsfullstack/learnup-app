@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useContext } from "react";
 
 const Dropdown = () => {
-  const { isLoggedIn, dropdownIsOpen } = useContext(LearnUpContext);
+  const { isLoggedIn, dropdownIsOpen, signOut } = useContext(LearnUpContext);
   return (
     <div className={`
       ${dropdownIsOpen ? "flex" : "hidden"}
@@ -15,9 +15,19 @@ const Dropdown = () => {
         isLoggedIn ?
           <span className="w-full h-fit flex flex-col gap-4 p-4 border border-grey-5">
             <span className="w-full flex flex-col gap-4 py-4">
-              <Link href="/blog" className="px-4 py-2 text-grey-2 font-enphasis hover:underline">Blog</Link>
-              <Link href="/profile" className="px-4 py-2 flex items-center text-grey-2 font-enphasis hover:underline">Perfil</Link>
-              <Link href="/login" className="px-4 py-2 flex items-center text-grey-2 font-enphasis hover:underline">Sair</Link>
+              <Link
+                href="/blog"
+                className="px-4 py-2 text-grey-2 font-enphasis hover:underline"
+              >Blog</Link>
+              <Link
+                href="/profile"
+                className="px-4 py-2 flex items-center text-grey-2 font-enphasis hover:underline"
+              >Perfil</Link>
+              <Link
+                href="/login"
+                className="px-4 py-2 flex items-center text-grey-2 font-enphasis hover:underline"
+                onClick={() => signOut()}
+              >Sair</Link>
             </span>
           </span>
           :
