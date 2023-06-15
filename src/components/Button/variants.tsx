@@ -129,7 +129,7 @@ export const WhiteButton = ({
     <button
       className={`
       ${defaultStyle} 
-      max-w-[220px] whitespace-nowrap border border-grey-5 bg-white text-brand-4 shadow-card hover:bg-grey-6 disabled:text-grey-4 disabled:hover:bg-white
+      max-w-[250px] whitespace-nowrap border border-grey-5 bg-white text-brand-4 shadow-card hover:bg-grey-6 disabled:text-grey-4 disabled:hover:bg-white
     `}
       onClick={onClick}
       disabled={disabled}
