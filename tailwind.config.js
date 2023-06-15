@@ -69,6 +69,59 @@ module.exports = {
       },
       white: "#ffffff",
     },
+    keyframes: {
+      "fade-in-and-up": {
+        "0%": {
+          opacity: 0,
+          transform: "translateY(10px)",
+        },
+        "100%": {
+          opacity: 1,
+          transform: "translateY(0)",
+        },
+      },
+      "fade-in-and-left": {
+        "0%": {
+          opacity: 0,
+          transform: "translateX(-10px)",
+        },
+        "100%": {
+          opacity: 1,
+          transform: "translateX(0)",
+        },
+      },
+      "fade-in-and-right": {
+        "0%": {
+          opacity: 0,
+          transform: "translateX(10px)",
+        },
+        "100%": {
+          opacity: 1,
+          transform: "translateX(0)",
+        },
+      },
+      "fade-in-and-down": {
+        "0%": {
+          opacity: 0,
+          transform: "translateY(-10px)",
+        },
+        "100%": {
+          opacity: 1,
+          transform: "translateY(0)",
+        },
+      },
+    },
+    animation: {
+      "fade-in-and-up": "fade-in-and-up .5s ease-in-out .4s forwards",
+      "fade-in-and-left": "fade-in-and-left .5s ease-in-out forwards",
+      "fade-in-and-right": "fade-in-and-right .5s ease-in-out forwards",
+      "fade-in-and-down": "fade-in-and-down .5s ease-in-out forwards",
+    },
+    transitionDelay:{
+      5000: "50000ms",
+    }
+
+    
   },
   plugins: [],
 };
