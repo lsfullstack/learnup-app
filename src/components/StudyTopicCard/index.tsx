@@ -18,9 +18,14 @@ const StudyTopicCard = ({
   const [deleteModal, setDeleteModal] = useState(false);
 
   return (
-    <div className="flex w-full max-w-lg flex-col gap-2 rounded-lg border border-grey-6 bg-white px-4 py-2 text-grey-1 shadow-card transition duration-300 hover:shadow-card-hover">
+    <div
+      className={`
+        flex w-full max-w-5xl flex-col gap-2 rounded-lg border
+        border-grey-6 bg-white px-4 py-2 text-grey-1 text-left
+        shadow-card transition duration-300 hover:shadow-card-hover
+      `}>
       <div className="relative flex items-center justify-between text-xl font-bold">
-        {title}
+      <span className="truncate max-w-[90%] cursor-pointer hover:underline"> {title}</span>
 
         <IoEllipsisHorizontal
           className="cursor-pointer"

@@ -27,6 +27,7 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
   const [token, setToken] = useState(
     localStorage.getItem("@learn-up:token") || ""
   );
+  const [studyTopics, setStudyTopics] = useState<IStudyTopicProps[]>([]);
   const router = useRouter();
 
   useEffect(() => {
@@ -162,6 +163,16 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
     }
   };
 
+  const studyTopicsSeach = (search: string) => {
+
+  }
+
+  const getStudyTopics = async () => {
+    const res = await api.get("/study-topics");
+    const studyTopicsList: IStudyTopicProps[] = res.data;
+    setStudyTopics(studyTopicsList);
+  }
+
   return (
     <LearnUpContext.Provider
       value={{
@@ -183,6 +194,9 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
         addVideo,
         addAnnotation,
         addExtraContent,
+        studyTopicsSeach,
+        getStudyTopics,
+        studyTopics,
       }}
     >
       {children}

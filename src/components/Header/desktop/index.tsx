@@ -19,7 +19,7 @@ const DesktopUserMenu = () => {
         isLoggedIn ?
           <span 
             className={`
-              font-enphasis h-full flex items-center gap-2 cursor-pointer 
+              min-w-[120px] font-enphasis h-full flex items-center gap-2 cursor-pointer 
               border-l-4 border-grey-5 pl-4 hover:underline relative 
             `}
             onClick={() => setMenuIsOpen(!menuIsOpen)}
