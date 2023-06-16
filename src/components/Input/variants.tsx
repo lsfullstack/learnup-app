@@ -1,4 +1,5 @@
 import { IVariantInputProps } from "./interface";
+import { AiOutlineSearch } from "react-icons/ai";
 
 export const InputBasic = ({
   placeholder,
@@ -85,18 +86,10 @@ export const InputSearch = ({
           px-2 focus:outline-none
         `}
       />
-      <button
-        type="submit"
-        className={`
-          h-10 w-20 rounded-lg bg-brand-1 
-          px-4 text-button 
-          font-button text-white 
-          transition duration-300
-          hover:bg-brand-2
-        `}
-      >
-        Buscar
-      </button>
+
+      <div className="bg-brand-1 hover:bg-brand-2 transition duration-300 p-[2px] rounded-md">
+        <AiOutlineSearch className="text-white transition duration-300" size={32}/>
+      </div>
     </div>
   );
 };

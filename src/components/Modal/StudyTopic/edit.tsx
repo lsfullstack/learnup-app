@@ -30,12 +30,12 @@ export const EditStudyTopicModal = ({ isOpen, onClose }: IModalProps) => {
       <Form onSubmit={handleSubmit(editStudyTopic)}>
         <Input
           type="text"
-          name="name"
+          name="title"
           label="Nome"
           placeholder="Desenvolvimento Web Front-End"
           model="input-label"
           register={register}
-          error={errors.name}
+          error={errors.title}
         />
         <Input
           type="text"

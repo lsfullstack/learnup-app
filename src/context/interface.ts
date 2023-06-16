@@ -19,6 +19,9 @@ export interface ILearnUpContextProps {
   addVideo: ({}: ILinkProps) => Promise<void>;
   addAnnotation: ({}: IAnnotationProps) => Promise<void>;
   addExtraContent: ({}: ILinkProps) => Promise<void>;
+  studyTopicsSeach: (search: string) => void;
+  getStudyTopics: () => Promise<void>;
+  studyTopics: IStudyTopicProps[];
 }
 
 export interface ILearnUpProviderProps {
@@ -50,7 +53,8 @@ export interface IRegisterUserProps {
 }
 
 export interface IStudyTopicProps {
-  name: string;
+  id?: string;
+  title: string;
   description: string;
   categories: string;
 }
@@ -65,4 +69,8 @@ export interface IAnnotationProps {
 
 export interface ILinkProps {
   link: string;
+}
+
+export interface ISeachProps {
+  search: string;
 }
