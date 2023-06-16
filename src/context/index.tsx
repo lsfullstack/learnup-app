@@ -80,25 +80,25 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
   };
 
   const createStudyTopic = async ({
-    name,
+    title,
     description,
     categories,
   }: IStudyTopicProps) => {
     try {
-      await api.post("/study-topics", { name, description, categories });
+      await api.post("/study-topics", { title, description, categories });
     } catch (error) {
       console.log(error);
     }
   };
 
   const editStudyTopic = async ({
-    name,
+    title,
     description,
     categories,
   }: IStudyTopicProps) => {
     try {
       await api.patch(`/study-topics/:studyTopicId`, {
-        name,
+        title,
         description,
         categories,
       });

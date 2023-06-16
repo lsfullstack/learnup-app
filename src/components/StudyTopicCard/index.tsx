@@ -30,6 +30,7 @@ const StudyTopicCard = ({
         <IoEllipsisHorizontal
           className="cursor-pointer"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
+          size={24}
         />
 
         {isMenuOpen && (
@@ -56,7 +57,7 @@ const StudyTopicCard = ({
       </div>
 
       <p>{description}</p>
-      <div className="flex gap-2">
+      <div className="flex gap-2 flex-wrap">
         {categories.map((category) => (
           <div
             className="w-fit rounded bg-grey-1 px-2 py-1 text-white"
