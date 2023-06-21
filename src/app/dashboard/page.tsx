@@ -66,13 +66,8 @@ const Dashboard = () => {
         )
         :
         <div className="w-full grid lg:grid-cols-2 2xl:grid-cols-3  gap-4 my-4">
-          {studyTopics.map(({title, description, categories, id}) => (
-            <StudyTopicCard
-              title={title}
-              categories={categories}
-              description={description}
-              key={id}
-            />
+          {studyTopics.map((studyTopic) => (
+            <StudyTopicCard studyTopic={studyTopic}/>
           ))}
         </div>
       }

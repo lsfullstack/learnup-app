@@ -1,31 +1,45 @@
 "use client";
 
-import { useState } from "react";
-import { IStudyTopicCardProps } from "./interface";
+import { useRouter } from "next/navigation";
+import { useContext, useState } from "react";
 import { IoEllipsisHorizontal } from "react-icons/io5";
+
+import { LearnUpContext } from "@/context";
+import { IStudyTopicCardProps } from "./interface";
 
 import Menu from "../Menu";
 import EditStudyTopicModal from "../Modal/StudyTopic/edit";
 import DeleteStudyTopicModal from "../Modal/StudyTopic/delete";
 
-const StudyTopicCard = ({
-  title,
-  description,
-  categories,
-}: IStudyTopicCardProps) => {
+const StudyTopicCard = ({ studyTopic }: IStudyTopicCardProps) => {
+  const { title, description, categories } = studyTopic;
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
+
+  const { setSelectedStudyTopic } = useContext(LearnUpContext);
+
+  const router = useRouter();
 
   return (
     <div
       className={`
         flex w-full max-w-5xl flex-col gap-2 rounded-lg border
-        border-grey-6 bg-white px-4 py-2 text-grey-1 text-left
+        border-grey-6 bg-white px-4 py-2 text-left text-grey-1
         shadow-card transition duration-300 hover:shadow-card-hover
-      `}>
+      `}
+      onClick={() => setSelectedStudyTopic(studyTopic)}
+    >
       <div className="relative flex items-center justify-between text-xl font-bold">
-      <span className="truncate max-w-[90%] cursor-pointer hover:underline"> {title}</span>
+        <span
+          className="max-w-[90%] cursor-pointer truncate hover:underline"
+          onClick={() => {
+            router.push("/dashboard/studyTopic");
+          }}
+        >
+          {title}
+        </span>
 
         <IoEllipsisHorizontal
           className="cursor-pointer"
@@ -57,7 +71,7 @@ const StudyTopicCard = ({
       </div>
 
       <p>{description}</p>
-      <div className="flex gap-2 flex-wrap">
+      <div className="flex flex-wrap gap-2">
         {categories.map((category) => (
           <div
             className="w-fit rounded bg-grey-1 px-2 py-1 text-white"

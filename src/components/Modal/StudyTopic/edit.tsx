@@ -26,7 +26,7 @@ export const EditStudyTopicModal = ({ isOpen, onClose }: IModalProps) => {
   const { editStudyTopic } = useContext(LearnUpContext);
 
   return (
-    <Modal title="Editar Tópico de Estudo" isOpen={isOpen} onClose={onClose}>
+    <Modal title="Editar Tópico de Estudo" isOpen={isOpen}>
       <Form onSubmit={handleSubmit(editStudyTopic)}>
         <Input
           type="text"

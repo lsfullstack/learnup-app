@@ -1,5 +1,5 @@
 import { IInputProps } from "./interface";
-import { InputBasic, InputSearch, InputLabel, Textarea } from "./variants";
+import { InputBasic, InputLabel, Textarea } from "./variants";
 
 const Input = ({
   label,
@@ -38,16 +38,6 @@ const Input = ({
             {error?.message}
           </span>
         </fieldset>
-      );
-    case "input-search":
-      return (
-        <InputSearch
-          label={label}
-          placeholder={placeholder}
-          name={name}
-          type={type}
-          register={register}
-        />
       );
     case "textarea":
       return (

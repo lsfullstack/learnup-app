@@ -8,12 +8,14 @@ import {
   ISignInProps,
   IRegisterUserProps,
   IStudyTopicProps,
-  ILessonProps,
   IAnnotationProps,
   ILinkProps,
+  ILesson,
+  ILessonProps,
 } from "./interface";
 import api from "@/services/api";
 import { useRouter } from "next/navigation";
+import { IStudyTopic } from "@/components/StudyTopicCard/interface";
 
 export const LearnUpContext = createContext<ILearnUpContextProps>(
   {} as ILearnUpContextProps
@@ -23,6 +25,13 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [user, setUser] = useState<IUserProps>({} as IUserProps);
   const [dropdownIsOpen, setDropdownIsOpen] = useState<boolean>(false);
+  const [createLessonIsOpen, setCreateLessonIsOpen] = useState<boolean>(false);
+  const [editLessonIsOpen, setEditLessonIsOpen] = useState<boolean>(false);
+  const [deleteLessonIsOpen, setDeleteLessonIsOpen] = useState<boolean>(false);
+  const [selectedLesson, setSelectedLesson] = useState<ILesson | null>(null);
+  const [selectedStudyTopic, setSelectedStudyTopic] =
+    useState<IStudyTopic | null>(null);
+  const [lessons, setLessons] = useState<ILesson[]>([]);
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
   const [token, setToken] = useState(
     localStorage.getItem("@learn-up:token") || ""
@@ -117,7 +126,24 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
 
   const createLesson = async ({ title }: ILessonProps) => {
     try {
-      await api.post("/lesson/:studyTopicId", { title });
+     await api.post(`/lesson/${selectedStudyTopic?.id}`,
+        {title}
+      );
+
+      setCreateLessonIsOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const listLessons = async () => {
+    try {
+      const response = await api.get(
+        `/lesson/study-topic/${selectedStudyTopic?.id}`
+      );
+      console.log(lessons);
+      
+      setLessons(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -125,7 +151,9 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
 
   const editLesson = async ({ title }: ILessonProps) => {
     try {
-      await api.patch("/lesson/:lessonId", { title });
+      await api.patch(`/lesson/${selectedLesson?.id}`, { title });
+
+      setEditLessonIsOpen(false);
     } catch (error) {
       console.log(error);
     }
@@ -133,7 +161,9 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
 
   const deleteLesson = async () => {
     try {
-      await api.delete("/lesson/:lessonId");
+      await api.delete(`/lesson/${selectedLesson?.id}`);
+
+      setDeleteLessonIsOpen(false);
     } catch (error) {
       console.log(error);
     }
@@ -163,15 +193,13 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
     }
   };
 
-  const studyTopicsSeach = (search: string) => {
-
-  }
+  const studyTopicsSeach = (search: string) => {};
 
   const getStudyTopics = async () => {
     const res = await api.get("/study-topics");
     const studyTopicsList: IStudyTopicProps[] = res.data;
     setStudyTopics(studyTopicsList);
-  }
+  };
 
   return (
     <LearnUpContext.Provider
@@ -189,6 +217,7 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
         editStudyTopic,
         deleteStudyTopic,
         createLesson,
+        listLessons,
         editLesson,
         deleteLesson,
         addVideo,
@@ -197,6 +226,17 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
         studyTopicsSeach,
         getStudyTopics,
         studyTopics,
+        createLessonIsOpen,
+        editLessonIsOpen,
+        deleteLessonIsOpen,
+        setCreateLessonIsOpen,
+        setEditLessonIsOpen,
+        setDeleteLessonIsOpen,
+        lessons,
+        selectedLesson,
+        setSelectedLesson,
+        selectedStudyTopic,
+        setSelectedStudyTopic,
       }}
     >
       {children}

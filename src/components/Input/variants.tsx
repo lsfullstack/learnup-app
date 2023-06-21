@@ -1,5 +1,4 @@
 import { IVariantInputProps } from "./interface";
-import { AiOutlineSearch } from "react-icons/ai";
 
 export const InputBasic = ({
   placeholder,
@@ -57,40 +56,6 @@ export const InputLabel = ({
         `}
       />
     </span>
-  );
-};
-
-export const InputSearch = ({
-  placeholder,
-  name,
-  type,
-  register,
-}: IVariantInputProps) => {
-  return (
-    <div
-      className={`
-        flex h-12 w-full items-center justify-between 
-        gap-2 rounded-lg border-2
-        border-grey-5 pr-1 
-        focus-within:border-brand-1 
-      `}
-    >
-      <input
-        type={type}
-        id={name}
-        placeholder={placeholder}
-        {...register(name)}
-        autoComplete="off"
-        className={`
-          autofocus:bg-transparent h-10 w-full rounded-lg border-grey-5 
-          px-2 focus:outline-none
-        `}
-      />
-
-      <div className="bg-brand-1 hover:bg-brand-2 transition duration-300 p-[2px] rounded-md">
-        <AiOutlineSearch className="text-white transition duration-300" size={32}/>
-      </div>
-    </div>
   );
 };
 

@@ -12,7 +12,7 @@ export const DeleteStudyTopicModal = ({ isOpen, onClose }: IModalProps) => {
   const { deleteStudyTopic } = useContext(LearnUpContext);
 
   return (
-    <Modal title="Excluir Tópico de Estudo" isOpen={isOpen} onClose={onClose}>
+    <Modal title="Excluir Tópico de Estudo" isOpen={isOpen}>
       <p className="py-2 text-center text-xl font-bold">
         Realmente deseja excluir este tópico? Esta ação não poderá ser desfeita.
       </p>

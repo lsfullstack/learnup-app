@@ -1,3 +1,4 @@
+import { IStudyTopic } from "@/components/StudyTopicCard/interface";
 import { Dispatch, ReactNode, SetStateAction } from "react";
 
 export interface ILearnUpContextProps {
@@ -14,6 +15,7 @@ export interface ILearnUpContextProps {
   editStudyTopic: ({}: IStudyTopicProps) => Promise<void>;
   deleteStudyTopic: () => Promise<void>;
   createLesson: ({}: ILessonProps) => Promise<void>;
+  listLessons: () => Promise<void>;
   editLesson: ({}: ILessonProps) => Promise<void>;
   deleteLesson: () => Promise<void>;
   addVideo: ({}: ILinkProps) => Promise<void>;
@@ -22,6 +24,17 @@ export interface ILearnUpContextProps {
   studyTopicsSeach: (search: string) => void;
   getStudyTopics: () => Promise<void>;
   studyTopics: IStudyTopicProps[];
+  createLessonIsOpen: boolean;
+  editLessonIsOpen: boolean;
+  deleteLessonIsOpen: boolean;
+  setCreateLessonIsOpen: Dispatch<SetStateAction<boolean>>;
+  setEditLessonIsOpen: Dispatch<SetStateAction<boolean>>;
+  setDeleteLessonIsOpen: Dispatch<SetStateAction<boolean>>;
+  lessons: ILesson[];
+  selectedLesson: ILesson | null;
+  setSelectedLesson: Dispatch<SetStateAction<ILesson | null>>;
+  selectedStudyTopic: IStudyTopic | null;
+  setSelectedStudyTopic: Dispatch<SetStateAction<IStudyTopic | null>>;
 }
 
 export interface ILearnUpProviderProps {
@@ -56,7 +69,7 @@ export interface IStudyTopicProps {
   id?: string;
   title: string;
   description: string;
-  categories: string;
+  categories: string[];
 }
 
 export interface ILessonProps {
@@ -73,4 +86,9 @@ export interface ILinkProps {
 
 export interface ISeachProps {
   search: string;
+}
+
+export interface ILesson {
+  id: string;
+  title: string;
 }
