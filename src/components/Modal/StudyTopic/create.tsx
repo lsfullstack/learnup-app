@@ -26,7 +26,7 @@ export const CreateStudyTopicModal = ({ isOpen, onClose }: IModalProps) => {
   const { createStudyTopic } = useContext(LearnUpContext);
 
   return (
-    <Modal title="Criar Tópico de Estudo" isOpen={isOpen} onClose={onClose}>
+    <Modal title="Criar Tópico de Estudo" isOpen={isOpen}>
       <Form onSubmit={handleSubmit(createStudyTopic)}>
         <Input
           type="text"
