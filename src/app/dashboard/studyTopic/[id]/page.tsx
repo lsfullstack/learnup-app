@@ -1,12 +1,11 @@
 "use client";
 
 import { TbPlus } from "react-icons/tb";
-import { useRouter } from "next/navigation";
 import { RiArrowLeftLine } from "react-icons/ri";
+import { useParams, useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 
 import { LearnUpContext } from "@/context";
-import { ILesson } from "@/context/interface";
 import { InputSearch } from "@/components/Input/Search";
 
 import Button from "@/components/Button";
@@ -15,33 +14,27 @@ import CreateLessonModal from "@/components/Modal/Lesson/create";
 
 export default function StudyTopic() {
   const [inputValue, setInputValue] = useState<string>("");
-  const [filteredLessons, setFilteredLessons] = useState<ILesson[]>([]);
 
   const router = useRouter();
+  const { id } = useParams();
 
   const {
     createLessonIsOpen,
     setCreateLessonIsOpen,
     lessons,
     selectedStudyTopic,
-    listLessons
+    retrieveStudyTopic,
+    listLessons,
   } = useContext(LearnUpContext);
 
   useEffect(() => {
-    listLessons()
-  }, [lessons])
+    retrieveStudyTopic(id);
+    listLessons(id);
+  }, []);
 
-  const showLessons = () => {
-    const result = lessons.filter((lesson) =>
-      lesson.title.toLowerCase().includes(inputValue.toLowerCase())
-    );
-
-    setFilteredLessons(result);
-  };
-
-  const handleReset = () => {
-    console.log("hey");
-  };
+  const filteredLessons = lessons.filter((lesson) =>
+    lesson.title.toLowerCase().includes(inputValue.toLowerCase())
+  );
 
   return (
     <section className="flex h-full flex-col gap-5 py-6">
@@ -84,15 +77,12 @@ export default function StudyTopic() {
         <InputSearch
           placeholder="Digite sua pesquisa aqui"
           type="search"
+          value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          onKeyDown={() => showLessons()}
-          onReset={() => handleReset()}
         />
       </div>
 
-      <LessonList
-        lessons={filteredLessons.length > 0 ? filteredLessons : lessons}
-      />
+      <LessonList lessons={filteredLessons} />
     </section>
   );
 }

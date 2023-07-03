@@ -100,6 +100,19 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
     }
   };
 
+  const retrieveStudyTopic = async (studyTopicId: string) => {
+    try {
+      api.defaults.headers.Authorization = `Bearer ${token}`;
+      const response = await api.get<IStudyTopic>(
+        `/study-topics/${studyTopicId}`
+      );
+
+      setSelectedStudyTopic(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const editStudyTopic = async ({
     title,
     description,
@@ -126,23 +139,22 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
 
   const createLesson = async ({ title }: ILessonProps) => {
     try {
-     await api.post(`/lesson/${selectedStudyTopic?.id}`,
-        {title}
+      const response = await api.post<ILesson>(
+        `/lesson/${selectedStudyTopic?.id}`,
+        { title }
       );
 
+      setLessons([response.data, ...lessons]);
       setCreateLessonIsOpen(false);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const listLessons = async () => {
+  const listLessons = async (studyTopicId: string) => {
     try {
-      const response = await api.get(
-        `/lesson/study-topic/${selectedStudyTopic?.id}`
-      );
-      console.log(lessons);
-      
+      const response = await api.get(`/lesson/study-topic/${studyTopicId}`);
+
       setLessons(response.data);
     } catch (error) {
       console.log(error);
@@ -151,7 +163,17 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
 
   const editLesson = async ({ title }: ILessonProps) => {
     try {
-      await api.patch(`/lesson/${selectedLesson?.id}`, { title });
+      const response = await api.patch(`/lesson/${selectedLesson?.id}`, {
+        title,
+      });
+
+      const findLesson = lessons.find(
+        (lesson) => lesson.id === selectedLesson?.id
+      );
+
+      const lessonIndex = lessons.indexOf(findLesson!);
+
+      lessons.splice(lessonIndex, 1, response.data);
 
       setEditLessonIsOpen(false);
     } catch (error) {
@@ -162,6 +184,13 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
   const deleteLesson = async () => {
     try {
       await api.delete(`/lesson/${selectedLesson?.id}`);
+
+      const findLesson = lessons.find(
+        (lesson) => lesson.id === selectedLesson?.id
+      );
+      const lessonIndex = lessons.indexOf(findLesson!);
+
+      lessons.splice(lessonIndex, 1);
 
       setDeleteLessonIsOpen(false);
     } catch (error) {
@@ -196,6 +225,7 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
   const studyTopicsSeach = (search: string) => {};
 
   const getStudyTopics = async () => {
+    api.defaults.headers.Authorization = `Bearer ${token}`;
     const res = await api.get("/study-topics");
     const studyTopicsList: IStudyTopicProps[] = res.data;
     setStudyTopics(studyTopicsList);
@@ -214,6 +244,7 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
         signOut,
         registerUser,
         createStudyTopic,
+        retrieveStudyTopic,
         editStudyTopic,
         deleteStudyTopic,
         createLesson,

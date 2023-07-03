@@ -35,7 +35,7 @@ const StudyTopicCard = ({ studyTopic }: IStudyTopicCardProps) => {
         <span
           className="max-w-[90%] cursor-pointer truncate hover:underline"
           onClick={() => {
-            router.push("/dashboard/studyTopic");
+            router.push(`/dashboard/studyTopic/${studyTopic.id}`);
           }}
         >
           {title}

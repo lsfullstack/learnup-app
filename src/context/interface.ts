@@ -12,10 +12,11 @@ export interface ILearnUpContextProps {
   signOut: () => void;
   registerUser: ({}: IRegisterUserProps) => void;
   createStudyTopic: ({}: IStudyTopicProps) => Promise<void>;
+  retrieveStudyTopic: (studyTopicId: string) => Promise<void>;
   editStudyTopic: ({}: IStudyTopicProps) => Promise<void>;
   deleteStudyTopic: () => Promise<void>;
   createLesson: ({}: ILessonProps) => Promise<void>;
-  listLessons: () => Promise<void>;
+  listLessons: (studyTopicId: string) => Promise<void>;
   editLesson: ({}: ILessonProps) => Promise<void>;
   deleteLesson: () => Promise<void>;
   addVideo: ({}: ILinkProps) => Promise<void>;

@@ -5,7 +5,6 @@ export const InputSearch = ({
   type,
   placeholder,
   onChange,
-  onKeyDown,
 }: IInputSearchProps) => {
   return (
     <div
@@ -25,7 +24,6 @@ export const InputSearch = ({
           px-2 focus:outline-none
         `}
         onChange={onChange}
-        onKeyDown={onKeyDown}
       />
 
       <div className="rounded-md bg-brand-1 p-[2px] transition duration-300 hover:bg-brand-2">
