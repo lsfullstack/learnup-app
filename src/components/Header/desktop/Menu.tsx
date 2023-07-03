@@ -14,7 +14,7 @@ const Menu = () => {
     `}
     >
       <Link href="/profile" className="w-full border-b-2 border-grey-5 px-4 py-2  font-enphasis text-grey-3 hover:underline" >Perfil</Link>
-      <Link href="/login" className="w-full border-b-2 border-grey-5 px-4 py-2 font-enphasis text-grey-3 hover:underline" onClick={() => signOut()}>Sair</Link>
+      <Link href="/homepage/login" className="w-full border-b-2 border-grey-5 px-4 py-2 font-enphasis text-grey-3 hover:underline" onClick={() => signOut()}>Sair</Link>
     </nav>
   )
 }

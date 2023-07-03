@@ -31,7 +31,7 @@ const DesktopUserMenu = () => {
           :
           <span className="w-[280px] h-full font-enphasis flex items-center gap-4 border-l-4 border-grey-5 pl-4">
             <Link 
-              href="/login" 
+              href="/homepage/login" 
               className="w-48 flex items-center justify-center hover:underline"
             >Fazer Login</Link>
 
