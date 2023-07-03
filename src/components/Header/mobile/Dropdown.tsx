@@ -24,7 +24,7 @@ const Dropdown = () => {
                 className="px-4 py-2 flex items-center text-grey-2 font-enphasis hover:underline"
               >Perfil</Link>
               <Link
-                href="/login"
+                href="/homepage/login"
                 className="px-4 py-2 flex items-center text-grey-2 font-enphasis hover:underline"
                 onClick={() => signOut()}
               >Sair</Link>
@@ -36,7 +36,7 @@ const Dropdown = () => {
 
             <span className="w-full font-enphasis flex flex-col gap-4 border-t-2 border-grey-5 py-4">
               <Link 
-                href="/login" 
+                href="/homepage/login" 
                 className="px-4 py-2 flex items-center hover:underline"
               >Fazer Login</Link>
 

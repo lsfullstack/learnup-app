@@ -8,8 +8,9 @@ export const APP_ROUTES = {
     }
   },
   public: {
-    login: "/login",
-    register: "/register",
+    homepage: "/homepage",
+    login: "/homepage/login",
+    register: "/homepage/register",
     forgotPassword: "/forgot-password",
   },
 }

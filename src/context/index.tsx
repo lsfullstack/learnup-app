@@ -71,7 +71,7 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
     localStorage.removeItem("@learn-up:token");
     setIsLoggedIn(false);
     setUser({} as IUserProps);
-    router.push("/login");
+    router.push("/homepage/login");
   };
 
   const registerUser = async ({
@@ -82,7 +82,7 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
   }: IRegisterUserProps) => {
     try {
       await api.post("/users", { username, name, email, password });
-      router.push("/login");
+      router.push("/homepage/login");
     } catch (error) {
       console.log(error);
     }
