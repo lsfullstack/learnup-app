@@ -7,8 +7,8 @@ module.exports = {
   ],
   theme: {
     extend: {
-      width:{
-        "text_container": "33rem",
+      width: {
+        text_container: "33rem",
       },
       fontSize: {
         heading_1: "2.25rem",
@@ -37,8 +37,8 @@ module.exports = {
       backgroundColor: {
         modal: "rgba(23, 21, 21, 0.5)",
         "add-link": "rgba(0, 104, 255, 0.05)",
+        "add-link-hover": "rgba(0, 104, 255, 0.15)",
       },
-      
     },
     colors: {
       brand: {
@@ -117,11 +117,9 @@ module.exports = {
       "fade-in-and-right": "fade-in-and-right .5s ease-in-out forwards",
       "fade-in-and-down": "fade-in-and-down .5s ease-in-out forwards",
     },
-    transitionDelay:{
+    transitionDelay: {
       5000: "50000ms",
-    }
-
-    
+    },
   },
   plugins: [],
 };

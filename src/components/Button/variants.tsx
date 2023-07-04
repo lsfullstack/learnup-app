@@ -139,3 +139,21 @@ export const WhiteButton = ({
     </button>
   );
 };
+
+export const LinkButton = ({
+  children,
+  defaultStyle,
+  onClick,
+}: IVariantButtonProps) => {
+  return (
+    <button
+      className={`
+      ${defaultStyle} 
+      mb-2 max-w-fit self-start rounded bg-add-link py-2 text-sm text-brand-3 hover:bg-add-link-hover
+    `}
+      onClick={onClick}
+    >
+      <span>{children}</span>
+    </button>
+  );
+};

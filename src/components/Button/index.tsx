@@ -3,6 +3,7 @@ import {
   BlueButton,
   Gray1Button,
   Gray6Button,
+  LinkButton,
   OrangeButton,
   RedButton,
   WhiteButton,
@@ -82,6 +83,14 @@ const Button = ({
           defaultStyle={defaultStyle}
           onClick={onClick}
           disabled={disabled}
+        />
+      );
+    case "link":
+      return (
+        <LinkButton
+          children={children}
+          defaultStyle={defaultStyle}
+          onClick={onClick}
         />
       );
     default:
