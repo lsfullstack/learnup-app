@@ -23,7 +23,7 @@ export const EditLessonModal = ({ isOpen, onClose }: IModalProps) => {
     resolver: zodResolver(lessonSchema),
   });
 
-  const { editLesson } = useContext(LearnUpContext);
+  const { editLesson, selectedLesson } = useContext(LearnUpContext);
 
   return (
     <Modal title="Editar Aula" isOpen={isOpen}>
@@ -32,7 +32,7 @@ export const EditLessonModal = ({ isOpen, onClose }: IModalProps) => {
           type="text"
           name="title"
           label="Título"
-          placeholder="Introdução ao Desenvolvimento Web Front-E..."
+          placeholder={selectedLesson?.title}
           model="input-label"
           register={register}
           error={errors.title}

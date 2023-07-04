@@ -17,5 +17,4 @@ export interface IVariantInputProps extends Omit<IInputProps, "model"> {}
 export interface IInputSearchProps
   extends Omit<IVariantInputProps, "model" | "register" | "name"> {
   onChange: (e: any) => void;
-  onKeyDown: () => void;
 }
