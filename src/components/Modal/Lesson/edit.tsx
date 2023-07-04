@@ -37,12 +37,12 @@ export const EditLessonModal = ({ isOpen, onClose }: IModalProps) => {
           register={register}
           error={errors.title}
         />
-        <div className="flex w-full gap-4">
-          <Button styleType="grey-2" onClick={() => onClose(false)}>
-            Cancelar
-          </Button>
+        <div className="flex w-full flex-row-reverse gap-4">
           <Button type="submit" styleType="blue">
             Salvar
+          </Button>
+          <Button styleType="grey-2" onClick={() => onClose(false)}>
+            Cancelar
           </Button>
         </div>
       </Form>
