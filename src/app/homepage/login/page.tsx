@@ -10,12 +10,14 @@ import { TargetLink } from "@/components/TargetLink";
 import { DevelopersLink } from "@/components/DevelopersLink";
 import { useForm } from "react-hook-form";
 import { ISignInProps } from "@/context/interface";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { LearnUpContext } from "@/context";
 import { zodResolver } from "@hookform/resolvers/zod";
 import loginSchema from "./validations";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
+  const [rememberMe, setRememberMe] = useState(false);
   const {
     register,
     handleSubmit,
@@ -24,6 +26,24 @@ export default function Login() {
     resolver: zodResolver(loginSchema),
   });
   const { signIn } = useContext(LearnUpContext);
+  const router = useRouter();
+  const handleRememberMeChange = () => {
+    setRememberMe(!rememberMe);
+  };
+
+  const handleFormSubmit = (data: ISignInProps) => {
+    if (rememberMe) {
+      const expirationDate = new Date();
+      expirationDate.setDate(expirationDate.getDate() + 30);
+      document.cookie = `rememberMe=true; expires=${expirationDate.toUTCString()}; path=/`;
+    } else {
+      document.cookie =
+        "rememberMe=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    }
+
+    signIn(data);
+    router.push("/dashboard");
+  };
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-between overflow-auto px-8 py-4 lg:w-[50%]">
@@ -43,7 +63,7 @@ export default function Login() {
           <p className="font-enphasis">Entre para estudar.</p>
         </div>
 
-        <Form onSubmit={handleSubmit(signIn)}>
+        <Form onSubmit={handleSubmit(handleFormSubmit)}>
           <Input
             model="input-label"
             name="email"
@@ -70,9 +90,10 @@ export default function Login() {
             <input
               type="checkbox"
               placeholder="Lembrar de mim"
-              id="rememberme"
+              id="rememberMeCheckbox"
               className="h-5 w-5 cursor-pointer rounded-sm"
-              {...register("rememberme")}
+              checked={rememberMe}
+              {...register("rememberme", { onChange: handleRememberMeChange })}
             />
             <label htmlFor="rememberme" className="cursor-pointer">
               Lembrar de mim
