@@ -3,7 +3,7 @@ import { ButtonHTMLAttributes, ReactElement, ReactNode } from "react";
 export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   icon?: ReactElement;
-  styleType: "blue" | "orange" | "grey-1" | "grey-2" | "red" | "white";
+  styleType: "blue" | "orange" | "grey-1" | "grey-2" | "red" | "white" | "link";
   empty?: boolean;
   onClick?: () => void;
 }

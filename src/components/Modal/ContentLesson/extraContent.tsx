@@ -75,11 +75,9 @@ export const AddExtraContentModal = ({ isOpen, onClose }: IModalProps) => {
           />
         ))}
 
-        <div className="mb-2 cursor-pointer self-start rounded bg-add-link px-4 py-2">
-          <p className="text-sm font-semibold text-brand-3" onClick={newInput}>
-            Adicionar campo para link
-          </p>
-        </div>
+        <Button styleType="link" onClick={newInput}>
+          Adicionar campo para link
+        </Button>
 
         <div className="flex w-full gap-4">
           <Button styleType="grey-2" onClick={() => onClose(false)}>
