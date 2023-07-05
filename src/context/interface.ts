@@ -31,11 +31,22 @@ export interface ILearnUpContextProps {
   setCreateLessonIsOpen: Dispatch<SetStateAction<boolean>>;
   setEditLessonIsOpen: Dispatch<SetStateAction<boolean>>;
   setDeleteLessonIsOpen: Dispatch<SetStateAction<boolean>>;
+  createTimelineIsOpen: boolean;
+  editTimelineIsOpen: boolean;
+  deleteTimelineIsOpen: boolean;
+  setCreateTimelineIsOpen: Dispatch<SetStateAction<boolean>>;
+  setEditTimelineIsOpen: Dispatch<SetStateAction<boolean>>;
+  setDeleteTimelineIsOpen: Dispatch<SetStateAction<boolean>>;
   lessons: ILesson[];
   selectedLesson: ILesson | null;
   setSelectedLesson: Dispatch<SetStateAction<ILesson | null>>;
   selectedStudyTopic: IStudyTopic | null;
   setSelectedStudyTopic: Dispatch<SetStateAction<IStudyTopic | null>>;
+  selectedTimeline: ITimeline | null;
+  setSelectedTimeline: Dispatch<SetStateAction<ITimeline | null>>;
+  createTimeline: ({}: ITimelineProps) => Promise<void>;
+  editTimeline: ({}: ITimelineProps) => Promise<void>;
+  deleteTimeline: () => Promise<void>;
 }
 
 export interface ILearnUpProviderProps {
@@ -92,4 +103,13 @@ export interface ISeachProps {
 export interface ILesson {
   id: string;
   title: string;
+}
+
+export interface ITimelineProps {
+  time: string;
+  description: string;
+}
+
+export interface ITimeline extends ITimelineProps {
+  id: string;
 }

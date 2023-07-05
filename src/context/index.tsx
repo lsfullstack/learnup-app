@@ -12,6 +12,8 @@ import {
   ILinkProps,
   ILesson,
   ILessonProps,
+  ITimelineProps,
+  ITimeline,
 } from "./interface";
 import api from "@/services/api";
 import { useRouter } from "next/navigation";
@@ -28,9 +30,17 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
   const [createLessonIsOpen, setCreateLessonIsOpen] = useState<boolean>(false);
   const [editLessonIsOpen, setEditLessonIsOpen] = useState<boolean>(false);
   const [deleteLessonIsOpen, setDeleteLessonIsOpen] = useState<boolean>(false);
+  const [createTimelineIsOpen, setCreateTimelineIsOpen] =
+    useState<boolean>(false);
+  const [editTimelineIsOpen, setEditTimelineIsOpen] = useState<boolean>(false);
+  const [deleteTimelineIsOpen, setDeleteTimelineIsOpen] =
+    useState<boolean>(false);
   const [selectedLesson, setSelectedLesson] = useState<ILesson | null>(null);
   const [selectedStudyTopic, setSelectedStudyTopic] =
     useState<IStudyTopic | null>(null);
+  const [selectedTimeline, setSelectedTimeline] = useState<ITimeline | null>(
+    null
+  );
   const [lessons, setLessons] = useState<ILesson[]>([]);
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
   const [token, setToken] = useState(
@@ -198,6 +208,39 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
     }
   };
 
+  const createTimeline = async ({ time, description }: ITimelineProps) => {
+    try {
+      await api.post<ITimeline>(`/timeline/:id-video`, { time, description });
+
+      setCreateTimelineIsOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const editTimeline = async ({ time, description }: ITimelineProps) => {
+    try {
+      await api.patch(`/timeline/${selectedTimeline?.id}`, {
+        time,
+        description,
+      });
+
+      setEditTimelineIsOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteTimeline = async () => {
+    try {
+      await api.delete(`/timeline/${selectedTimeline?.id}`);
+
+      setDeleteTimelineIsOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const addVideo = async ({ link }: ILinkProps) => {
     try {
       await api.post("/video/:lessonId", { link });
@@ -263,11 +306,22 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
         setCreateLessonIsOpen,
         setEditLessonIsOpen,
         setDeleteLessonIsOpen,
+        createTimelineIsOpen,
+        editTimelineIsOpen,
+        deleteTimelineIsOpen,
+        setCreateTimelineIsOpen,
+        setEditTimelineIsOpen,
+        setDeleteTimelineIsOpen,
         lessons,
         selectedLesson,
         setSelectedLesson,
         selectedStudyTopic,
         setSelectedStudyTopic,
+        selectedTimeline,
+        setSelectedTimeline,
+        createTimeline,
+        editTimeline,
+        deleteTimeline,
       }}
     >
       {children}
