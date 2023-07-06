@@ -4,7 +4,7 @@ import { useState } from "react";
 import { TbPlus } from "react-icons/tb";
 
 import Button from "../Button";
-import AddVideoModal from "../Modal/ContentLesson/video";
+import AddVideoModal from "../Modal/Video/create";
 
 const VideoSection = () => {
   const [isOpen, setIsOpen] = useState(false);

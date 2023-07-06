@@ -9,11 +9,15 @@ import {
   IRegisterUserProps,
   IStudyTopicProps,
   IAnnotationProps,
-  ILinkProps,
   ILesson,
   ILessonProps,
   ITimelineProps,
   ITimeline,
+  IVideo,
+  IVideoProps,
+  IExtraContentProps,
+  IAnnotation,
+  IExtraContent,
 } from "./interface";
 import api from "@/services/api";
 import { useRouter } from "next/navigation";
@@ -35,12 +39,32 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
   const [editTimelineIsOpen, setEditTimelineIsOpen] = useState<boolean>(false);
   const [deleteTimelineIsOpen, setDeleteTimelineIsOpen] =
     useState<boolean>(false);
+  const [createVideoIsOpen, setCreateVideoIsOpen] = useState<boolean>(false);
+  const [editVideoIsOpen, setEditVideoIsOpen] = useState<boolean>(false);
+  const [deleteVideoIsOpen, setDeleteVideoIsOpen] = useState<boolean>(false);
+  const [createAnnotationIsOpen, setCreateAnnotationIsOpen] =
+    useState<boolean>(false);
+  const [editAnnotationIsOpen, setEditAnnotationIsOpen] =
+    useState<boolean>(false);
+  const [deleteAnnotationIsOpen, setDeleteAnnotationIsOpen] =
+    useState<boolean>(false);
+  const [createExtraContentIsOpen, setCreateExtraContentIsOpen] =
+    useState<boolean>(false);
+  const [editExtraContentIsOpen, setEditExtraContentIsOpen] =
+    useState<boolean>(false);
+  const [deleteExtraContentIsOpen, setDeleteExtraContentIsOpen] =
+    useState<boolean>(false);
   const [selectedLesson, setSelectedLesson] = useState<ILesson | null>(null);
   const [selectedStudyTopic, setSelectedStudyTopic] =
     useState<IStudyTopic | null>(null);
   const [selectedTimeline, setSelectedTimeline] = useState<ITimeline | null>(
     null
   );
+  const [selectedVideo, setSelectedVideo] = useState<IVideo | null>(null);
+  const [selectedAnnotation, setSelectedAnnotation] =
+    useState<IAnnotation | null>(null);
+  const [selectedExtraContent, setSelectedExtraContent] =
+    useState<IExtraContent | null>(null);
   const [lessons, setLessons] = useState<ILesson[]>([]);
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
   const [token, setToken] = useState(
@@ -220,7 +244,7 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
 
   const editTimeline = async ({ time, description }: ITimelineProps) => {
     try {
-      await api.patch(`/timeline/${selectedTimeline?.id}`, {
+      await api.patch<ITimeline>(`/timeline/${selectedTimeline?.id}`, {
         time,
         description,
       });
@@ -241,9 +265,31 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
     }
   };
 
-  const addVideo = async ({ link }: ILinkProps) => {
+  const addVideo = async ({ title, link }: IVideoProps) => {
     try {
-      await api.post("/video/:lessonId", { link });
+      await api.post<IVideo>(`/video/${selectedLesson?.id}`, { title, link });
+
+      setCreateVideoIsOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const editVideo = async ({ title, link }: IVideoProps) => {
+    try {
+      await api.patch<IVideo>(`/video/${selectedVideo?.id}`, { title, link });
+
+      setEditVideoIsOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteVideo = async () => {
+    try {
+      await api.delete(`/video/${selectedVideo?.id}`);
+
+      setDeleteVideoIsOpen(false);
     } catch (error) {
       console.log(error);
     }
@@ -251,15 +297,72 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
 
   const addAnnotation = async ({ annotation }: IAnnotationProps) => {
     try {
-      await api.post("/annotation/:lessonId", { annotation });
+      await api.post<IAnnotation>(`/annotation/${selectedLesson?.id}`, {
+        annotation,
+      });
+
+      setCreateAnnotationIsOpen(false);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const addExtraContent = async ({ link }: ILinkProps) => {
+  const editAnnotation = async ({ annotation }: IAnnotationProps) => {
     try {
-      await api.post("/extraContent/:lessonId", { link });
+      await api.patch<IAnnotation>(`/annotation/${selectedAnnotation?.id}`, {
+        annotation,
+      });
+
+      setEditAnnotationIsOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteAnnotation = async () => {
+    try {
+      await api.delete(`/annotation/${selectedAnnotation?.id}`);
+
+      setDeleteAnnotationIsOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addExtraContent = async ({ title, link }: IExtraContentProps) => {
+    try {
+      await api.post<IExtraContent>(`/extra-content/${selectedLesson?.id}`, {
+        title,
+        link,
+      });
+
+      setCreateExtraContentIsOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const editExtraContent = async ({ title, link }: IExtraContentProps) => {
+    try {
+      await api.patch<IExtraContent>(
+        `/extra-content/${selectedExtraContent?.id}`,
+        {
+          title,
+          link,
+        }
+      );
+
+      setEditExtraContentIsOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteExtraContent = async () => {
+    try {
+      await api.delete(`/extra-content/${selectedExtraContent?.id}`);
+
+      setDeleteExtraContentIsOpen(false);
     } catch (error) {
       console.log(error);
     }
@@ -295,8 +398,14 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
         editLesson,
         deleteLesson,
         addVideo,
+        editVideo,
+        deleteVideo,
         addAnnotation,
+        editAnnotation,
+        deleteAnnotation,
         addExtraContent,
+        editExtraContent,
+        deleteExtraContent,
         studyTopicsSeach,
         getStudyTopics,
         studyTopics,
@@ -312,6 +421,24 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
         setCreateTimelineIsOpen,
         setEditTimelineIsOpen,
         setDeleteTimelineIsOpen,
+        createVideoIsOpen,
+        editVideoIsOpen,
+        deleteVideoIsOpen,
+        setCreateVideoIsOpen,
+        setEditVideoIsOpen,
+        setDeleteVideoIsOpen,
+        createAnnotationIsOpen,
+        editAnnotationIsOpen,
+        deleteAnnotationIsOpen,
+        setCreateAnnotationIsOpen,
+        setEditAnnotationIsOpen,
+        setDeleteAnnotationIsOpen,
+        createExtraContentIsOpen,
+        editExtraContentIsOpen,
+        deleteExtraContentIsOpen,
+        setCreateExtraContentIsOpen,
+        setEditExtraContentIsOpen,
+        setDeleteExtraContentIsOpen,
         lessons,
         selectedLesson,
         setSelectedLesson,
@@ -319,6 +446,12 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
         setSelectedStudyTopic,
         selectedTimeline,
         setSelectedTimeline,
+        selectedVideo,
+        setSelectedVideo,
+        selectedAnnotation,
+        setSelectedAnnotation,
+        selectedExtraContent,
+        setSelectedExtraContent,
         createTimeline,
         editTimeline,
         deleteTimeline,
