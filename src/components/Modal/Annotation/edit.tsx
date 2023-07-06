@@ -42,19 +42,25 @@ export const EditAnnotationModal = ({ isOpen, onClose }: IModalProps) => {
             register={register}
             error={errors.annotation}
           />
-          <div className="flex w-full items-center justify-between">
+          <div className="flex w-full flex-col items-center justify-between gap-4 sm:flex-row">
             <FaTrash
               size={30}
               cursor="pointer"
-              className="text-feedback-error-1"
+              className="hidden text-feedback-error-1 sm:block"
               onClick={() => setIsDeleteOpen(true)}
             />
-            <div className="flex gap-4 sm:w-1/2">
+            <div className="flex w-full gap-4 md:w-7/12">
               <Button styleType="grey-2" onClick={() => onClose(false)}>
                 Cancelar
               </Button>
               <Button type="submit" styleType="blue">
                 Salvar
+              </Button>
+            </div>
+            <div className="flex w-full flex-col gap-4 sm:hidden">
+              <div className="my-2 h-[2px] w-full bg-[#D9D9D9]" />
+              <Button styleType="red" onClick={() => setIsDeleteOpen(true)}>
+                Excluir
               </Button>
             </div>
           </div>
