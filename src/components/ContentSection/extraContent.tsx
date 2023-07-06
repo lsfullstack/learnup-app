@@ -4,7 +4,7 @@ import { useState } from "react";
 import { TbPlus } from "react-icons/tb";
 
 import Button from "../Button";
-import AddExtraContentModal from "../Modal/ContentLesson/extraContent";
+import AddExtraContentModal from "../Modal/ExtraContent/create";
 
 const ExtraContentSection = () => {
   const [isOpen, setIsOpen] = useState(false);

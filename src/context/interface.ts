@@ -19,9 +19,15 @@ export interface ILearnUpContextProps {
   listLessons: (studyTopicId: string) => Promise<void>;
   editLesson: ({}: ILessonProps) => Promise<void>;
   deleteLesson: () => Promise<void>;
-  addVideo: ({}: ILinkProps) => Promise<void>;
+  addVideo: ({}: IVideoProps) => Promise<void>;
+  editVideo: ({}: IVideoProps) => Promise<void>;
+  deleteVideo: () => Promise<void>;
   addAnnotation: ({}: IAnnotationProps) => Promise<void>;
-  addExtraContent: ({}: ILinkProps) => Promise<void>;
+  editAnnotation: ({}: IAnnotationProps) => Promise<void>;
+  deleteAnnotation: () => Promise<void>;
+  addExtraContent: ({}: IExtraContentProps) => Promise<void>;
+  editExtraContent: ({}: IExtraContentProps) => Promise<void>;
+  deleteExtraContent: () => Promise<void>;
   studyTopicsSeach: (search: string) => void;
   getStudyTopics: () => Promise<void>;
   studyTopics: IStudyTopicProps[];
@@ -37,6 +43,24 @@ export interface ILearnUpContextProps {
   setCreateTimelineIsOpen: Dispatch<SetStateAction<boolean>>;
   setEditTimelineIsOpen: Dispatch<SetStateAction<boolean>>;
   setDeleteTimelineIsOpen: Dispatch<SetStateAction<boolean>>;
+  createVideoIsOpen: boolean;
+  editVideoIsOpen: boolean;
+  deleteVideoIsOpen: boolean;
+  setCreateVideoIsOpen: Dispatch<SetStateAction<boolean>>;
+  setEditVideoIsOpen: Dispatch<SetStateAction<boolean>>;
+  setDeleteVideoIsOpen: Dispatch<SetStateAction<boolean>>;
+  createAnnotationIsOpen: boolean;
+  editAnnotationIsOpen: boolean;
+  deleteAnnotationIsOpen: boolean;
+  setCreateAnnotationIsOpen: Dispatch<SetStateAction<boolean>>;
+  setEditAnnotationIsOpen: Dispatch<SetStateAction<boolean>>;
+  setDeleteAnnotationIsOpen: Dispatch<SetStateAction<boolean>>;
+  createExtraContentIsOpen: boolean;
+  editExtraContentIsOpen: boolean;
+  deleteExtraContentIsOpen: boolean;
+  setCreateExtraContentIsOpen: Dispatch<SetStateAction<boolean>>;
+  setEditExtraContentIsOpen: Dispatch<SetStateAction<boolean>>;
+  setDeleteExtraContentIsOpen: Dispatch<SetStateAction<boolean>>;
   lessons: ILesson[];
   selectedLesson: ILesson | null;
   setSelectedLesson: Dispatch<SetStateAction<ILesson | null>>;
@@ -44,6 +68,12 @@ export interface ILearnUpContextProps {
   setSelectedStudyTopic: Dispatch<SetStateAction<IStudyTopic | null>>;
   selectedTimeline: ITimeline | null;
   setSelectedTimeline: Dispatch<SetStateAction<ITimeline | null>>;
+  selectedVideo: IVideo | null;
+  setSelectedVideo: Dispatch<SetStateAction<IVideo | null>>;
+  selectedAnnotation: IAnnotation | null;
+  setSelectedAnnotation: Dispatch<SetStateAction<IAnnotation | null>>;
+  selectedExtraContent: IExtraContent | null;
+  setSelectedExtraContent: Dispatch<SetStateAction<IExtraContent | null>>;
   createTimeline: ({}: ITimelineProps) => Promise<void>;
   editTimeline: ({}: ITimelineProps) => Promise<void>;
   deleteTimeline: () => Promise<void>;
@@ -88,21 +118,38 @@ export interface ILessonProps {
   title: string;
 }
 
+export interface ILesson extends ILessonProps {
+  id: string;
+}
+
+export interface IVideoProps {
+  title: string;
+  link: string;
+}
+
+export interface IVideo extends IVideoProps {
+  id: string;
+}
+
 export interface IAnnotationProps {
   annotation: string;
 }
 
-export interface ILinkProps {
+export interface IAnnotation extends IAnnotationProps {
+  id: string;
+}
+
+export interface IExtraContentProps {
+  title: string;
   link: string;
+}
+
+export interface IExtraContent extends IExtraContentProps {
+  id: string;
 }
 
 export interface ISeachProps {
   search: string;
-}
-
-export interface ILesson {
-  id: string;
-  title: string;
 }
 
 export interface ITimelineProps {

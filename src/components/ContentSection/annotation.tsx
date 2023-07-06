@@ -4,7 +4,7 @@ import { useState } from "react";
 import { TbPlus } from "react-icons/tb";
 
 import Button from "../Button";
-import AddAnnotationsModal from "../Modal/ContentLesson/annotation";
+import AddAnnotationsModal from "../Modal/Annotation/create";
 
 const AnnotationSection = () => {
   const [isOpen, setIsOpen] = useState(false);

@@ -5,39 +5,39 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Modal from "..";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
+import annotationSchema from "./validation";
 
-import { Form } from "@/components/Form";
-import { linkSchema } from "./validations";
 import { IModalProps } from "../interface";
 import { LearnUpContext } from "@/context";
-import { ILinkProps } from "@/context/interface";
+import { IAnnotationProps } from "@/context/interface";
 
-export const AddVideoModal = ({ isOpen, onClose }: IModalProps) => {
+export const AddAnnotationModal = ({ isOpen, onClose }: IModalProps) => {
   if (!isOpen) return null;
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ILinkProps>({
-    resolver: zodResolver(linkSchema),
+  } = useForm<IAnnotationProps>({
+    resolver: zodResolver(annotationSchema),
   });
 
-  const { addVideo } = useContext(LearnUpContext);
+  const { addAnnotation } = useContext(LearnUpContext);
 
   return (
-    <Modal title="Adicionar Vídeo" isOpen={isOpen}>
-      <Form onSubmit={handleSubmit(addVideo)}>
+    <Modal title="Adicionar Anotações" isOpen={isOpen} big>
+      <form
+        className="flex w-full flex-col items-end gap-2 p-4"
+        onSubmit={handleSubmit(addAnnotation)}
+      >
         <Input
-          type="text"
-          name="link"
-          label="Link"
-          placeholder="Digite o link do vídeo"
-          model="input-label"
+          name="annotation"
+          placeholder="Digite suas anotações"
+          model="textarea"
           register={register}
-          error={errors.link}
+          error={errors.annotation}
         />
-        <div className="flex w-full gap-4">
+        <div className="flex gap-4 sm:w-1/2">
           <Button styleType="grey-2" onClick={() => onClose(false)}>
             Cancelar
           </Button>
@@ -45,9 +45,9 @@ export const AddVideoModal = ({ isOpen, onClose }: IModalProps) => {
             Salvar
           </Button>
         </div>
-      </Form>
+      </form>
     </Modal>
   );
 };
 
-export default AddVideoModal;
+export default AddAnnotationModal;
