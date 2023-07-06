@@ -68,15 +68,16 @@ export const Textarea = ({
     <textarea
       placeholder={placeholder}
       {...register(name)}
+      rows={6}
+      wrap="hard"
       className={`
-        mb-2 h-40 w-full resize-none rounded-lg
-        border-2 border-grey-5 px-4 py-2
-        text-grey-1 
-        shadow-md shadow-grey-4/25 
-        transition duration-300 
-        placeholder:text-grey-4 
-        hover:bg-grey-6 focus:border-brand-1
-        focus:outline-none
+        mb-2 w-full resize-y rounded-lg border-2
+        border-grey-5 px-4 py-2 text-grey-1
+        shadow-md 
+        shadow-grey-4/25 transition 
+        duration-300 placeholder:text-grey-4 
+        hover:bg-grey-6 
+        focus:border-brand-1 focus:outline-none
       `}
     />
   );
