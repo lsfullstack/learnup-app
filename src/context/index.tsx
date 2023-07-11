@@ -147,6 +147,16 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
     }
   };
 
+  const retrieveLesson = async (lessonId: string) => {
+    try {
+      api.defaults.headers.Authorization = `Bearer ${token}`;
+      const response = await api.get<ILesson>(`/lesson/${lessonId}`);
+      setSelectedLesson(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const editStudyTopic = async ({
     title,
     description,
@@ -391,6 +401,7 @@ const LearnUpProvider = ({ children }: ILearnUpProviderProps) => {
         registerUser,
         createStudyTopic,
         retrieveStudyTopic,
+        retrieveLesson,
         editStudyTopic,
         deleteStudyTopic,
         createLesson,
