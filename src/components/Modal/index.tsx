@@ -26,7 +26,7 @@ const Modal = ({ title, isOpen, children, big }: IModalContainerProps) => {
     >
       <div
         ref={divElement}
-        className={`relative z-10 flex h-full w-full flex-col items-center gap-4 overflow-y-auto bg-white p-4 sm:m-5 sm:h-fit ${
+        className={`relative z-10 flex h-full w-full flex-col items-center gap-4 overflow-y-auto bg-white p-4 sm:m-5 sm:h-fit sm:max-h-[90%] ${
           big ? "sm:max-w-[992px]" : "sm:max-w-[392px]"
         }  sm:rounded-lg`}
       >
