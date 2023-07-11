@@ -97,7 +97,11 @@ export default function Register() {
           <Button styleType="blue">Cadastrar</Button>
           <span className="flex w-full flex-wrap gap-1">
             Já possui uma conta?{" "}
-            <TargetLink href="/homepage/login" styleType="blue">
+            <TargetLink
+              href="/homepage/login"
+              targetType="_self"
+              styleType="blue"
+            >
               Faça login!
             </TargetLink>
           </span>
