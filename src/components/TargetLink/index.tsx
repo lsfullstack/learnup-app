@@ -1,7 +1,12 @@
 import Link from "next/link";
 import { ITargetLinkProps } from "./interface";
 
-export const TargetLink = ({ href, children, styleType }: ITargetLinkProps) => {
+export const TargetLink = ({
+  href,
+  children,
+  styleType,
+  targetType,
+}: ITargetLinkProps) => {
   const defaultStyle: string = `w-fit font-enphasis hover:underline`;
 
   return (
@@ -11,7 +16,7 @@ export const TargetLink = ({ href, children, styleType }: ITargetLinkProps) => {
         ${styleType === "grey" && `text-grey-4 ${defaultStyle}`}
       `}
       href={href}
-      target="_blank"
+      target={targetType ? "_self" : "_blank"}
     >
       {children}
     </Link>

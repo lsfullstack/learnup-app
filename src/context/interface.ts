@@ -13,6 +13,7 @@ export interface ILearnUpContextProps {
   registerUser: ({}: IRegisterUserProps) => void;
   createStudyTopic: ({}: IStudyTopicProps) => Promise<void>;
   retrieveStudyTopic: (studyTopicId: string) => Promise<void>;
+  retrieveLesson: (lessonId: string) => Promise<void>;
   editStudyTopic: ({}: IStudyTopicProps) => Promise<void>;
   deleteStudyTopic: () => Promise<void>;
   createLesson: ({}: ILessonProps) => Promise<void>;

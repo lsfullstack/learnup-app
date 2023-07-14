@@ -18,7 +18,7 @@ import { useRouter } from "next/navigation";
 
 export default function Login() {
   const [rememberMe, setRememberMe] = useState(false);
-  
+
   const {
     register,
     handleSubmit,
@@ -104,7 +104,11 @@ export default function Login() {
           <Button styleType="blue">Login</Button>
           <span className="flex w-full flex-wrap gap-1">
             Ainda não possui uma conta?{" "}
-            <TargetLink href="/homepage/register" styleType="blue">
+            <TargetLink
+              href="/homepage/register"
+              targetType="_self"
+              styleType="blue"
+            >
               Cadastre-se!
             </TargetLink>
           </span>

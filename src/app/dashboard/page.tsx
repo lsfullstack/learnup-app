@@ -39,14 +39,14 @@ const Dashboard = () => {
       </h1>
       <div className="mt-4 flex flex-col gap-4 sm:flex-row-reverse sm:justify-between">
         <div className="w-full min-w-[240px] sm:max-w-lg">
-          <Input
+          {/* <Input
             model="input-search"
             placeholder="Digite sua pesquisa"
             name="search"
             register={register}
             type="search"
             // onSubmit={handleSubmit(studyTopicsSeach)}
-          />
+          /> */}
         </div>
         <div className="w-full sm:max-w-[200px]">
           <Button

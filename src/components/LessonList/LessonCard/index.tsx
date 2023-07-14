@@ -3,6 +3,7 @@
 import { useContext, useState } from "react";
 import { MdOutlineRateReview } from "react-icons/md";
 import { IoEllipsisHorizontal } from "react-icons/io5";
+import { useRouter } from "next/navigation";
 
 import { LearnUpContext } from "@/context";
 import { ILessonCardProp } from "./interface";
@@ -13,20 +14,18 @@ import DeleteLessonModal from "../../Modal/Lesson/delete";
 
 const LessonCard = ({ lesson }: ILessonCardProp) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter()
 
-  const {
-    setSelectedLesson,
-    editLessonIsOpen,
-    deleteLessonIsOpen,
-    setEditLessonIsOpen,
-    setDeleteLessonIsOpen,
-  } = useContext(LearnUpContext);
-
+  const { setSelectedLesson, selectedLesson, setEditLessonIsOpen, editLessonIsOpen, deleteLessonIsOpen, setDeleteLessonIsOpen } = useContext(LearnUpContext);
+console.log(selectedLesson)
   return (
     <div className="flex justify-between gap-2 border border-grey-5 bg-white px-4 py-2 transition duration-300 hover:bg-grey-6">
       <p
         className="cursor-pointer truncate font-semibold text-grey-1 hover:underline"
-        onClick={() => setSelectedLesson(lesson)}
+        onClick={() => {
+          setSelectedLesson(lesson)
+          router.push(`/dashboard/lessonPage/${lesson.id}`);
+        }}
       >
         {lesson.title}
       </p>
