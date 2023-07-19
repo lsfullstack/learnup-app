@@ -16,7 +16,7 @@ export default function StudyTopic() {
   const [inputValue, setInputValue] = useState<string>("");
 
   const router = useRouter();
-  const { id } = useParams();
+  const { studyTopicId } = useParams();
 
   const {
     createLessonIsOpen,
@@ -28,8 +28,8 @@ export default function StudyTopic() {
   } = useContext(LearnUpContext);
 
   useEffect(() => {
-    retrieveStudyTopic(id);
-    listLessons(id);
+    retrieveStudyTopic(studyTopicId);
+    listLessons(studyTopicId);
   }, []);
 
   const filteredLessons = lessons.filter((lesson) =>
@@ -37,7 +37,7 @@ export default function StudyTopic() {
   );
 
   return (
-    <section className="flex h-full flex-col gap-5 py-6">
+    <section className="flex h-full flex-col gap-5 py-6 px-8">
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-2">
           <RiArrowLeftLine

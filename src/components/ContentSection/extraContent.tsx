@@ -11,14 +11,14 @@ const ExtraContentSection = () => {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-col items-center justify-between gap-2 px-8 py-4 sm:flex-row">
+      <div className="flex items-center justify-between gap-0">
         <h2 className=" text-xl font-bold text-grey-1">Conteúdo Extra</h2>
         <Button
           styleType="white"
           icon={<TbPlus />}
           onClick={() => setIsOpen(true)}
         >
-          Adicionar Link
+          Adicionar
         </Button>
         <AddExtraContentModal isOpen={isOpen} onClose={setIsOpen} />
       </div>
