@@ -29,7 +29,7 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <section className="mt-8 h-full text-center">
+    <section className="mt-8 h-full text-center px-8">
       <CreateStudyTopicModal
         isOpen={createStudyTopicModal}
         onClose={() => setCreateSudyTopicModal(false)}
